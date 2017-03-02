@@ -27,9 +27,8 @@ tree_distance = cmpfun(tree_distance)
 ### Output : A vector of group size (length of g)                                    ###
 ########################################################################################
 getgroupsize = function(tree, g){
-    output = c()
-    for (i in 1:g){
-    output = c(output,length(which(cutree(tree,g)==i)))
-    }
-    return(output)
+  size = unname(table(cutree(tree,g)))
+  return(size)
 }
+
+getgroupsize = cmpfun(getgroupsize)
